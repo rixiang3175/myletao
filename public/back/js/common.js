@@ -1,4 +1,23 @@
 $(function(){
+
+  // 5.判断用户有没有登入,没有就回到登录框登录
+  if(location.href.indexOf('login.html') == -1){
+    $.ajax({
+      type: 'get',
+      url : '/employee/checkRootLogin',
+      dataType: 'json',
+      success : function(info){
+        console.log(info);
+        if (info.success){
+          // 直接进入
+        }
+        if (info.error === 400){
+          location.href = 'login.html';
+        }
+      }
+    })
+  }
+
   //进度条
 // //beforeSend回调函数
 // 2. ajaxSend在beforeSend回调函数之后触发
@@ -20,5 +39,34 @@ $(function(){
     })
    },3000)
 
-   
+   //点击分类管理,弹出二级菜单
+   $('.category').click(function(){
+     $('.child').stop().slideToggle();
+   })
+
+   //点击切换侧边栏
+   $('.icon-menu').click(function(){
+     $('.lt-aside').toggleClass('hidden-m')
+     $('.top-bar').toggleClass('hidden-m')
+     $('.lt-contain').toggleClass('hidden-m')
+   })
+
+  //  4.点击退出按钮,退出登入
+  $('.btn-logout').click(function(){
+    $.ajax({
+      type:'get',
+      url : '/employee/employeeLogout',
+      dataType: 'json',
+      success: function(info){
+        // console.log(info)
+        if (info.success){
+          location.href = 'login.html';
+        }
+      }
+    })
+  })
+  //模态框显示
+  $('.icon-logout').click(function(){
+    $('.logout').modal('show')
+  })
 })

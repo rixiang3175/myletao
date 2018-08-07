@@ -31,10 +31,13 @@ ul {
   left: 0;
   top: 0;
   z-index: 999;
+  transition: all 1s;
+}
+.lt-aside.hidden-m {
+  left: -180px;
 }
 .lt-aside a {
   color: #fff;
-
 }
 .lt-aside .a-title {
   height: 50px;
@@ -76,8 +79,8 @@ ul {
   background: #1D1F21;
   border-left: 3px solid #006699;
 }
-.lt-aside .a-nav .category .child {
-  padding-left: 20px;
+.lt-aside .a-nav .category .child a {
+  padding-left: 60px;
 }
 .lt-contain {
   background: thistle;
@@ -85,6 +88,10 @@ ul {
   width: 100%;
   padding-left: 180px;
   padding-top: 50px;
+  transition: all 1s;
+}
+.lt-contain.hidden-m  {
+  padding-left: 0;
 }
 
 .lt-contain .top-bar {
@@ -95,8 +102,11 @@ ul {
   top: 0;
   left: 0;
   padding-left: 180px;
+  transition: all 1s;
 }
-
+.top-bar.hidden-m {
+  padding-left: 0;
+}
 .lt-contain .top-bar .icon-menu,
 .lt-contain .top-bar .icon-logout{
     width: 50px;
@@ -108,6 +118,9 @@ ul {
 .lt-contain .content .breadcrumb {
   margin: 20px 0;
 }
+
+/* 模态框 */
+
 
 
 
